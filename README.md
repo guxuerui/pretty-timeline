@@ -43,6 +43,7 @@ app.component('PrettyTimeline', PrettyTimeline)
 ### 2. 使用方式(Usage）
 
 ```ts
+import image from '/imgs/street.jpeg'
 import type { ITimeline } from '~/types'
 
 const timelineArr = ref<ITimeline[]>([
