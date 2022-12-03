@@ -1,35 +1,35 @@
 {
   "name": "pretty-timeline",
   "version": "1.0.0",
-  "author": "guxuerui",
-  "description": "vue3 pretty timeline",
   "packageManager": "pnpm@7.1.5",
+  "description": "vue3 pretty timeline",
+  "author": "guxuerui",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guxuerui/pretty-timeline"
+  },
   "keywords": [
     "vue3",
     "Vue3",
     "pretty",
     "timeline"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/guxuerui/pretty-timeline"
+  "exports": {
+    ".": {
+      "require": "./dist/pretty-timeline.umd.ts",
+      "import": "./dist/pretty-timeline.es.ts"
+    },
+    "./dist/style.css": {
+      "require": "./dist/style.css",
+      "import": "./dist/style.css"
+    }
   },
-  "license": "MIT",
+  "main": "./dist/pretty-timeline.umd.ts",
+  "module": "./dist/pretty-timeline.es.ts",
   "files": [
     "dist"
   ],
-  "main": "./dist/pretty-timeline.umd.ts",
-  "module": "./dist/pretty-timeline.es.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/pretty-timeline.es.ts",
-      "require": "./dist/pretty-timeline.umd.ts"
-    },
-    "./dist/style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
-    }
-  },
   "scripts": {
     "build": "vite build",
     "dev": "vite --port 3334",

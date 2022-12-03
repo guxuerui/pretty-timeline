@@ -25,10 +25,8 @@ $ npm i pretty-timeline -S
 
 ```ts
 // 在.vue文件中
-<script setup lang="ts">
-  import { PrettyTimeline } from 'pretty-timeline'
-  import 'pretty-timeline/dist/style.css'
-</script>
+import { PrettyTimeline } from 'pretty-timeline'
+import 'pretty-timeline/dist/style.css'
 ```
 
 - 使用**全局导入**
@@ -39,7 +37,7 @@ import { PrettyTimeline } from 'pretty-timeline'
 import 'pretty-timeline/dist/style.css'
 
 // 注册为全局组件使用
-app.component('pretty-timeline', PrettyTimeline);
+app.component('PrettyTimeline', PrettyTimeline)
 ```
 
 ### 2. 使用方式(Usage）
