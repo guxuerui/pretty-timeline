@@ -3,7 +3,7 @@ export interface IList {
   iconColor: string
   iconRight?: string
   iconTop?: string
-  chipColor: string
+  chipColor?: string
   chipText?: string
   subTitleColor: string
   subTitle: string

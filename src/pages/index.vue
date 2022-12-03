@@ -19,14 +19,11 @@ const timelineArr = ref<ITimeline[]>([
         subTitle: '新的一年开始了',
         imgUrl: image,
         content: `
-        首创微信集商务、娱乐一体化多媒体智能终端机微美图打印机
-        营销推广活动支持导入SN码
-        微商城模板，支持分类列表
-        微商城完整支持微信支付
-        微商城数据统计显示顺序更正
-        微商城支持商品预览
-        微商城订单成功后，网页将收到新订单通知
-        幸运机活动时间延长至三个月等6个改进及Bug.
+        春日忆李白<br/>
+        白也诗无敌，飘然思不群。<br/>
+        清新庾开府，俊逸鲍参军。<br/>
+        渭北春天树，江东日暮云。<br/>
+        何时一尊酒，重与细论文。
         <br/>
         <a text="orange" border-b="1 dashed orange" href="https://github.com/guxuerui" target="_blank">我的Github</a>
         `,
@@ -42,9 +39,14 @@ const timelineArr = ref<ITimeline[]>([
         subTitle: '进入12月了',
         imgUrl: '',
         content: `
-        首创微信集商务、娱乐一体化多媒体智能终端机微美图打印机
-        营销推广活动支持导入SN码
-        微商城模板，支持分类列表.
+        菊<br/>
+
+        罗隐〔唐代〕<br/>
+
+        篱落岁云暮，数枝聊自芳。<br/>
+        雪裁纤蕊密，金拆小苞香。<br/>
+        千载白衣酒，一生青女霜。<br/>
+        春丛莫轻薄，彼此有行藏。
         <br/>
         <a text="blue" border-b="1 dashed blue" href="https://github.com/guxuerui" target="_blank">我的Github</a>
         `,
@@ -67,9 +69,12 @@ const timelineArr = ref<ITimeline[]>([
         subTitle: '去年今日',
         imgUrl: image,
         content: `
-        首创微信集商务、娱乐一体化多媒体智能终端机微美图打印机
-        营销推广活动支持导入SN码
-        微商城模板，支持分类列表.
+        秦淮杂诗·其八<br/>
+
+        王士祯〔清代〕<br/>
+
+        新歌细字写冰纨，小部君王带笑看。<br/>
+        千载秦淮呜咽水，不应仍恨孔都官。
         `,
       },
     ],

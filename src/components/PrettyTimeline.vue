@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<Props>(), {
     {
       isCollapsed: false,
       year: '2022年',
-      title: '光阴长河',
+      title: '',
       list: [
         {
           date: '',
