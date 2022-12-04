@@ -1,5 +1,23 @@
 <script setup lang="ts">
-import type { ITimeline } from '~/types'
+export interface IList {
+  date: string
+  iconColor: string
+  iconRight?: string
+  iconTop?: string
+  chipColor?: string
+  chipText?: string
+  subTitleColor: string
+  subTitle: string
+  imgUrl?: string
+  content: string
+}
+
+export interface ITimeline {
+  isCollapsed: boolean
+  year: string
+  title: string
+  list: IList[]
+}
 
 interface Props {
   timelineData: ITimeline[]
@@ -106,7 +124,7 @@ onMounted(() => {
 
 <style scoped>
   .timeline {
-    background: url("/images/line-bg.png") repeat-y 23% 0;
+    background: url(../../src/assets/line-bg.png) repeat-y 23% 0;
   }
   .list-item i {
     display: inline-block;

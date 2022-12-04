@@ -84,6 +84,6 @@ const timelineArr = ref<ITimeline[]>([
 
 <template>
   <div max-w-3xl my-0 ma>
-    <pretty-timeline :timeline-data="timelineArr" />
+    <PrettyTimeline :timeline-data="timelineArr" />
   </div>
 </template>
