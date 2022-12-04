@@ -165,7 +165,7 @@ interface IPrettyTimeline {
 |title|标题|string|''|true|
 |date|月份时间|string|''|true|
 |iconColor|圆环颜色|string|'#ec6a4f'|true|
-|iconRight|圆环定位右偏移量|string|'9%'|false|
+|iconRight|圆环定位右偏移量|string|'8%'|false|
 |iconTop|圆环定位上偏移量|string|'0%'|false|
 |chipColor|chip颜色|string|'#26c1c9'|false|
 |chipText|chip文本|string|''|false|

@@ -77,7 +77,7 @@ onMounted(() => {
               <div>{{ item.date }}</div>
               <svg
                 class="position-absolute"
-                :style="{ color: item.iconColor, right: item.iconRight || '9%', top: item.iconTop || '0%' }"
+                :style="{ color: item.iconColor, right: item.iconRight || '8%', top: item.iconTop || '0%' }"
                 width="1em"
                 height="1em"
                 viewBox="0 0 32 32"
