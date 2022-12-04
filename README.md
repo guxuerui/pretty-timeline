@@ -1,6 +1,6 @@
 # [pretty-timeline](https://github.com/guxuerui/pretty-timeline)
 
-这是一个vue3版本的时间轴组件, 功能强大、可配置性高、使用丝滑
+这是一个vue3版本的时间轴组件, 可配置性高、使用丝滑
 
 > 因为想使用时间轴组件，苦于没有找到现有的vue3版本，所以自己动手实现一下
 
