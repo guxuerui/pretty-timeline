@@ -65,13 +65,14 @@ export default defineConfig({
   ],
 
   // https://github.com/vitest-dev/vitest
-  test: {
-    environment: 'jsdom',
-  },
+  // test: {
+  //   environment: 'jsdom',
+  // },
   build: {
+    emptyOutDir: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'PrettyTimeline',
+      entry: path.resolve(__dirname, 'src/components/index.ts'),
+      name: 'pretty-timeline',
       fileName: format => `pretty-timeline.${format}.ts`,
     },
     rollupOptions: {
@@ -85,5 +86,4 @@ export default defineConfig({
       },
     },
   },
-
 })
