@@ -1,7 +1,7 @@
 {
   "name": "pretty-timeline",
-  "version": "1.1.3",
   "type": "module",
+  "version": "1.1.3",
   "description": "vue3 pretty timeline",
   "author": "guxuerui",
   "license": "MIT",
@@ -16,8 +16,6 @@
     "timeline",
     "vue3-timeline"
   ],
-  "main": "./dist/pretty-timeline.umd.ts",
-  "module": "./dist/pretty-timeline.es.ts",
   "exports": {
     ".": {
       "require": "./dist/pretty-timeline.umd.ts",
@@ -25,6 +23,8 @@
     },
     "./dist/style.css": "./dist/style.css"
   },
+  "main": "./dist/pretty-timeline.umd.ts",
+  "module": "./dist/pretty-timeline.es.ts",
   "files": [
     "dist/*"
   ],
