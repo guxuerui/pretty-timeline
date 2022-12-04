@@ -4,7 +4,7 @@
 
 > 因为想使用时间轴组件，苦于没有找到现有的vue3版本，所以自己动手实现一下
 
-## 安装
+## 安装(Install)
 
 ```sh
 # Install with pnpm
@@ -13,9 +13,15 @@ $ pnpm i pretty-timeline -S
 $ npm i pretty-timeline -S
 ```
 
-## Preview
+## 预览(Preview)
 
-[Please Look Here](https://www.guxuerui.cn/about/lifeTimeline)
+- On Light Mode
+
+![light](https://user-images.githubusercontent.com/23629097/205476617-3710f1c4-4f43-422b-9f26-1eea3416dbfb.png)
+
+- On Dark Mode
+
+![dark](https://user-images.githubusercontent.com/23629097/205476620-9590cd43-3ebc-45d1-b115-46eefa2407ca.png)
 
 ## 使用(Use)
 
@@ -42,7 +48,7 @@ app.use(PrettyTimeline)
 app.component('PrettyTimeline', PrettyTimeline)
 ```
 
-### 2. 使用方式(Usage）
+### 2. 使用示例(Example）
 
 ```ts
 import image from '/imgs/street.jpeg'
