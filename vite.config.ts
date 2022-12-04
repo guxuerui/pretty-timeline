@@ -65,9 +65,9 @@ export default defineConfig({
   ],
 
   // https://github.com/vitest-dev/vitest
-  // test: {
-  //   environment: 'jsdom',
-  // },
+  test: {
+    environment: 'jsdom',
+  },
   build: {
     emptyOutDir: true,
     lib: {
