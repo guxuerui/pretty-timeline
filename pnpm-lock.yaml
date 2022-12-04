@@ -6,8 +6,9 @@ specifiers:
   '@iconify-json/mdi': ^1.1.36
   '@types/canvas-confetti': ^1.6.0
   '@types/node': ^18.11.10
-  '@unocss/reset': ^0.47.5
-  '@vitejs/plugin-vue': ^3.2.0
+  '@unocss/reset': 0.47.5
+  '@unocss/vite': ^0.47.5
+  '@vitejs/plugin-vue': 3.2.0
   '@vue/test-utils': ^2.2.5
   '@vueuse/core': v9.1.0
   '@vueuse/head': v0.7.9
@@ -19,10 +20,10 @@ specifiers:
   pnpm: ^7.17.1
   prismjs: ^1.29.0
   typescript: ^4.9.3
-  unocss: ^0.47.5
+  unocss: 0.47.5
   unplugin-auto-import: ^0.12.0
   unplugin-vue-components: ^0.22.11
-  vite: ^3.2.4
+  vite: 3.2.4
   vite-plugin-pages: ^0.27.1
   vite-plugin-vue-markdown: 0.22.1
   vitest: ^0.25.3
@@ -47,6 +48,7 @@ devDependencies:
   '@types/canvas-confetti': 1.6.0
   '@types/node': 18.11.10
   '@unocss/reset': 0.47.5
+  '@unocss/vite': 0.47.5_vite@3.2.4
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
   '@vue/test-utils': 2.2.5_vue@3.2.45
   eslint: 8.29.0
