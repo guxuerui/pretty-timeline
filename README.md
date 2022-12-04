@@ -1,8 +1,8 @@
 # [pretty-timeline](https://github.com/guxuerui/pretty-timeline)
 
-这是一个Vue3版本的时间轴组件, 功能强大、使用丝滑
+这是一个vue3版本的时间轴组件, 功能强大、可配置性高、使用丝滑
 
-> 因为想使用时间轴来展示自己的一些经历，苦于没有找到满意的单vue3版本组件，所以自己动手写一个
+> 因为想使用时间轴组件，苦于没有找到现有的vue3版本，所以自己动手实现一下
 
 ## 安装
 
@@ -175,6 +175,14 @@ interface IPrettyTimeline {
 |subTitle|小标题|string|''|true|
 |imgUrl|图片链接|string|''|false|
 |content|正文内容|string|''|true|
+
+## 类型报错
+
+如果引入组件后报类型错误，可以在 `shims.d.ts`(或其它 `.d.ts` 文件)中加入:
+
+```ts
+declare module 'pretty-timeline'
+```
 
 ## License
 
