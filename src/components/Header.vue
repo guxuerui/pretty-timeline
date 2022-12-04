@@ -6,7 +6,7 @@ const isDarkMode = computed(() => {
 </script>
 
 <template>
-  <nav class="header pa-4 link font-mno">
+  <nav class="header pa-4 link">
     <div>
       <a href="/" class="c-gray-500 hover:c-black dark:hover:c-white">
         Home

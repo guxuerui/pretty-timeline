@@ -11,8 +11,6 @@ const timelineArr = ref<ITimeline[]>([
       {
         date: '12月3日',
         iconColor: 'green',
-        iconRight: '7%',
-        iconTop: '0%',
         chipColor: '#26C1C9',
         chipText: 'gxr chips',
         subTitleColor: '#ec6a13',
@@ -31,8 +29,6 @@ const timelineArr = ref<ITimeline[]>([
       {
         date: '12月2日',
         iconColor: '#fa1',
-        iconRight: '7%',
-        iconTop: '0%',
         chipColor: '#26C',
         chipText: '此时此刻, 恰如彼时彼刻',
         subTitleColor: '#ec6a13',
@@ -61,8 +57,6 @@ const timelineArr = ref<ITimeline[]>([
       {
         date: '12月2日',
         iconColor: 'cyan',
-        iconRight: '7%',
-        iconTop: '0%',
         chipColor: '#1C9',
         chipText: '你好吗',
         subTitleColor: '#1f3',

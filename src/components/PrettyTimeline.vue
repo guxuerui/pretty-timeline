@@ -1,29 +1,13 @@
 <script setup lang="ts">
-export interface IList {
-  date: string
-  iconColor: string
-  iconRight?: string
-  iconTop?: string
-  chipColor?: string
-  chipText?: string
-  subTitleColor: string
-  subTitle: string
-  imgUrl?: string
-  content: string
-}
+import type { ITimeline } from '~/types'
 
-export interface ITimeline {
-  isCollapsed: boolean
-  year: string
-  title: string
-  list: IList[]
-}
-
-interface Props {
+interface IPrettyTimeline {
+  baseColor?: string
   timelineData: ITimeline[]
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<IPrettyTimeline>(), {
+  baseColor: '#58a6fb',
   timelineData: () => [
     {
       isCollapsed: false,
@@ -33,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
         {
           date: '',
           iconColor: '#ec6a4f',
-          iconRight: '7%',
+          iconRight: '9%',
           iconTop: '0%',
           chipColor: '#26C1C9',
           chipText: '',
@@ -49,7 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const timelineArr = ref<ITimeline[]>([])
 watchEffect(() => {
-  timelineArr.value = props.timelineData.slice()
+  timelineArr.value = props.timelineData
 })
 
 const collapseLine = (index: number) => {
@@ -67,7 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div w-full min-h-5xl class="wrapper">
+  <div class="wrapper">
     <div class="timeline">
       <div
         v-for="timeline, index in timelineArr"
@@ -76,11 +60,11 @@ onMounted(() => {
         :class="{ close: timeline.isCollapsed }"
       >
         <div class="list-item">
-          <div text="#58a6fb 2xl center" cursor="pointer" @click="collapseLine(index)">
+          <div class="text-2xl text-center cursor-pointer" :style="{ color: baseColor }" @click="collapseLine(index)">
             <a>{{ timeline.year }}</a>
-            <i mx-3 />
+            <i class="mx-3" />
           </div>
-          <div text="#58a6fb 2xl">
+          <div class="text-2xl" :style="{ color: baseColor }">
             {{ timeline.title }}
           </div>
         </div>
@@ -88,31 +72,32 @@ onMounted(() => {
           <div
             v-for="item, i in timeline.list" :key="item.date + i"
             class="list-item mt-6"
-            text="xl"
           >
-            <div text="center 2xl" position="relative">
+            <div class="text-2xl text-center position-relative mb-3">
               <div>{{ item.date }}</div>
-              <div
-                i-carbon-circle-filled
-                text-2xl
-                position="absolute"
-                :style="{ color: item.iconColor, right: item.iconRight, top: item.iconTop }"
-              />
+              <svg
+                class="position-absolute"
+                :style="{ color: item.iconColor, right: item.iconRight || '9%', top: item.iconTop || '0%' }"
+                width="1em"
+                height="1em"
+                viewBox="0 0 32 32"
+              >
+                <circle cx="16" cy="16" r="10" fill="currentColor" />
+                <path fill="currentColor" d="M16 30a14 14 0 1 1 14-14a14.016 14.016 0 0 1-14 14Zm0-26a12 12 0 1 0 12 12A12.014 12.014 0 0 0 16 4Z" />
+              </svg>
             </div>
             <div>
-              <p mb-3>
+              <p class="list-subtitle">
                 <span
                   v-if="item.chipText"
-                  border="rounded-6"
-                  text="white"
-                  px-4 py-1 mr-4
+                  class="chip"
                   :style="{ background: item.chipColor }"
                 >
                   {{ item.chipText }}
                 </span>
                 <span :style="{ color: item.subTitleColor }">{{ item.subTitle }}</span>
               </p>
-              <img v-if="item.imgUrl" my-5 border="rounded-2" :src="item.imgUrl">
+              <img v-if="item.imgUrl" class="list-image" :src="item.imgUrl">
               <p v-html="item.content" />
             </div>
           </div>
@@ -123,8 +108,49 @@ onMounted(() => {
 </template>
 
 <style scoped>
+  .wrapper {
+    width: 100%;
+    min-height: 64rem;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
   .timeline {
     background: url(../../src/assets/line-bg.png) repeat-y 23% 0;
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  .mx-3 {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+  .mt-6 {
+    margin-top: 1.5rem;
+  }
+  .position-relative {
+    position: relative;
+  }
+  .position-absolute {
+    position: absolute;
+  }
+  .chip {
+    padding: 0.25rem 1rem;
+    margin-right: 1rem;
+    color: #fff;
+    border-radius: 1.5rem;
+  }
+  .list-image {
+    margin: 1.25rem 0;
+    border-radius: 0.5rem;
+  }
+  .list-subtitle {
+    margin-bottom: 0.75rem;
+    margin-top: 0.25rem;
   }
   .list-item i {
     display: inline-block;
@@ -132,7 +158,7 @@ onMounted(() => {
     width: 0;
     border-width: 6px;
     border-style: solid;
-    border-color: #58a6fb transparent transparent transparent;
+    border-color: v-bind('baseColor') transparent transparent transparent;
     -webkit-transition: .5s;
     -moz-transition: .5s;
     -ms-transition: .5s;
