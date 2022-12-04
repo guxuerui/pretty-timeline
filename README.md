@@ -154,18 +154,24 @@ export interface ITimeline {
   title: string
   list: IList[]
 }
+
+interface IPrettyTimeline {
+  baseColor?: string
+  timelineData: ITimeline[]
+}
 ```
 
 - **属性(Props)**
 
 |名称|描述|类型|默认|是否必须|
 |---|---|---|---|---|
+|baseColor|基础颜色, 应用于年份和title|string|'#58a6fb'|false|
 |isCollapsed|是否收起|boolean|false|true|
 |year|年份时间|string|''|true|
 |title|标题|string|''|true|
 |date|月份时间|string|''|true|
 |iconColor|圆环颜色|string|'#ec6a4f'|true|
-|iconRight|圆环定位右偏移量|string|'7%'|false|
+|iconRight|圆环定位右偏移量|string|'9%'|false|
 |iconTop|圆环定位上偏移量|string|'0%'|false|
 |chipColor|chip颜色|string|'#26c1c9'|false|
 |chipText|chip文本|string|''|false|
