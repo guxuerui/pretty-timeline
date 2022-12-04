@@ -33,10 +33,12 @@ import 'pretty-timeline/dist/style.css'
 
 ```ts
 // 在main.ts中
-import { PrettyTimeline } from 'pretty-timeline'
+import PrettyTimeline from 'pretty-timeline'
 import 'pretty-timeline/dist/style.css'
 
 // 注册为全局组件使用
+app.use(PrettyTimeline)
+// or
 app.component('PrettyTimeline', PrettyTimeline)
 ```
 
