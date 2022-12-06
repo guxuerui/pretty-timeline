@@ -56,10 +56,7 @@ const timelineArr = ref<ITimeline[]>([
     list: [
       {
         date: '12月2日',
-        iconColor: 'cyan',
-        chipColor: '#1C9',
         chipText: '你好吗',
-        subTitleColor: '#1f3',
         subTitle: '去年今日',
         imgUrl: image,
         content: `
