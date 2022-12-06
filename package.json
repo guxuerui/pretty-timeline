@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "dev": "vite --port 3334",
+    "dev": "vite --host",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
