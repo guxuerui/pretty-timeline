@@ -1,5 +1,23 @@
 <script setup lang="ts">
-import type { ITimeline } from '~/types'
+interface IList {
+  date: string
+  iconColor?: string
+  iconRight?: string
+  iconTop?: string
+  chipColor?: string
+  chipText?: string
+  subTitleColor?: string
+  subTitle: string
+  imgUrl?: string
+  content: string
+}
+
+interface ITimeline {
+  isCollapsed: boolean
+  year: string
+  title: string
+  list: IList[]
+}
 
 interface IPrettyTimeline {
   baseColor?: string
@@ -31,6 +49,27 @@ const props = withDefaults(defineProps<IPrettyTimeline>(), {
   ],
 })
 
+// 是否为移动端
+const ifMobile = isMobile()
+
+// icon position
+const iconStyle = (item: any) => {
+  if (ifMobile.value) {
+    return {
+      color: item.iconColor || '#ec6a4f',
+      right: item.iconRight || '100%',
+      top: item.iconTop || '0%',
+    }
+  }
+  else {
+    return {
+      color: item.iconColor || '#ec6a4f',
+      right: item.iconRight || '8%',
+      top: item.iconTop || '0%',
+    }
+  }
+}
+
 const timelineArr = ref<ITimeline[]>([])
 watchEffect(() => {
   timelineArr.value = props.timelineData
@@ -52,17 +91,16 @@ onMounted(() => {
 
 <template>
   <div class="wrapper">
-    <div class="timeline">
+    <div :class="ifMobile ? mobile.timeline : web.timeline">
       <div
         v-for="timeline, index in timelineArr"
         :key="index"
-        class="year"
         :class="{ close: timeline.isCollapsed }"
       >
-        <div class="list-item">
+        <div :class="ifMobile ? mobile.listItem : web.listItem">
           <div class="text-2xl text-center cursor-pointer" :style="{ color: baseColor }" @click="collapseLine(index)">
             <a>{{ timeline.year }}</a>
-            <i class="mx-3" />
+            <i class="mx-3 triangle" />
           </div>
           <div class="text-2xl" :style="{ color: baseColor }">
             {{ timeline.title }}
@@ -71,13 +109,16 @@ onMounted(() => {
         <div class="list">
           <div
             v-for="item, i in timeline.list" :key="item.date + i"
-            class="list-item mt-6"
+            class="mt-6"
+            :class="ifMobile ? mobile.lineItem : web.listItem"
           >
             <div class="text-2xl text-center position-relative mb-3">
-              <div>{{ item.date }}</div>
+              <div v-if="!ifMobile">
+                {{ item.date }}
+              </div>
               <svg
                 class="position-absolute"
-                :style="{ color: item.iconColor, right: item.iconRight || '8%', top: item.iconTop || '0%' }"
+                :style="iconStyle(item)"
                 width="1em"
                 height="1em"
                 viewBox="0 0 32 32"
@@ -91,12 +132,15 @@ onMounted(() => {
                 <span
                   v-if="item.chipText"
                   class="chip"
-                  :style="{ background: item.chipColor }"
+                  :style="{ background: item.chipColor || '#26c1c9' }"
                 >
                   {{ item.chipText }}
                 </span>
-                <span :style="{ color: item.subTitleColor }">{{ item.subTitle }}</span>
+                <span :style="{ color: item.subTitleColor || '#ec6a13' }">{{ item.subTitle }}</span>
               </p>
+              <div v-if="ifMobile" :style="{ color: item.subTitleColor || '#ec6a13' }">
+                {{ item.date }}
+              </div>
               <img v-if="item.imgUrl" class="list-image" :src="item.imgUrl">
               <p v-html="item.content" />
             </div>
@@ -112,14 +156,44 @@ onMounted(() => {
     width: 100%;
     min-height: 64rem;
   }
-  .text-center {
-    text-align: center;
+  .list {
+    margin: 10px 0;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
+    -moz-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
+    -ms-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
+    -o-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
+    transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
   }
-  .cursor-pointer {
-    cursor: pointer;
+  .triangle {
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-width: 6px;
+    border-style: solid;
+    border-color: v-bind('baseColor') transparent transparent transparent;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    -webkit-transform-origin: 6px 3px;
+    -moz-transform-origin: 6px 3px;
+    -ms-transform-origin: 6px 3px;
+    -o-transform-origin: 6px 3px;
+    transform-origin: 6px 3px
   }
-  .timeline {
-    background: url(../../src/assets/line-bg.png) repeat-y 23% 0;
+  .close .triangle {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg)
+  }
+  .close .list {
+    opacity: 0;
+    height: 0!important;
   }
   .text-2xl {
     font-size: 1.5rem;
@@ -138,61 +212,50 @@ onMounted(() => {
   .position-absolute {
     position: absolute;
   }
+  .text-center {
+    text-align: center;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .list-subtitle {
+    margin-bottom: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  .list-image {
+    margin: 1.25rem 0;
+    border-radius: 0.5rem;
+  }
   .chip {
     padding: 0.25rem 1rem;
     margin-right: 1rem;
     color: #fff;
     border-radius: 1.5rem;
   }
-  .list-image {
-    margin: 1.25rem 0;
-    border-radius: 0.5rem;
+</style>
+
+<style module="web">
+  .timeline {
+    background: url(../../src/assets/line-bg.png) repeat-y 23% 0;
   }
-  .list-subtitle {
-    margin-bottom: 0.75rem;
-    margin-top: 0.25rem;
-  }
-  .list-item i {
-    display: inline-block;
-    height: 0;
-    width: 0;
-    border-width: 6px;
-    border-style: solid;
-    border-color: v-bind('baseColor') transparent transparent transparent;
-    -webkit-transition: .5s;
-    -moz-transition: .5s;
-    -ms-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s;
-    -webkit-transform-origin: 6px 3px;
-    -moz-transform-origin: 6px 3px;
-    -ms-transform-origin: 6px 3px;
-    -o-transform-origin: 6px 3px;
-    transform-origin: 6px 3px
-  }
-  .year .list {
-    margin: 10px 0;
-    position: relative;
-    overflow: hidden;
-    -webkit-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
-    -moz-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
-    -ms-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
-    -o-transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
-    transition: height 1s cubic-bezier(0.025,0.025,0.000,1.115), opacity 1s;
-  }
-  .list-item {
+  .listItem {
     display: grid;
     grid-template-columns: 27% 73%;
   }
-  .year.close .list-item i {
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg)
+</style>
+
+<style module="mobile">
+  .timeline {
+    background: url(../../src/assets/line-bg.png) repeat-y 5% 0;
   }
-  .timeline .year.close .list {
-    opacity: 0;
-    height: 0!important;
+  .listItem {
+    padding-left: 30px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+  .lineItem {
+    padding-left: 30px;
+    display: grid;
+    grid-template-columns: 5% 95%;
   }
 </style>
