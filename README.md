@@ -106,10 +106,7 @@ const timelineArr = ref<ITimeline[]>([
     list: [
       {
         date: '12月2日',
-        iconColor: 'cyan',
-        chipColor: '#1C9',
         chipText: '你好吗',
-        subTitleColor: '#1f3',
         subTitle: '去年今日',
         imgUrl: image,
         content: `
@@ -172,12 +169,12 @@ interface IPrettyTimeline {
 |year|年份时间|string|''|true|
 |title|标题|string|''|true|
 |date|月份时间|string|''|true|
-|iconColor|圆环颜色|string|'#ec6a4f'|true|
+|iconColor|圆环颜色|string|'#ec6a4f'|false|
 |iconRight|圆环定位右偏移量|string|'8%'|false|
 |iconTop|圆环定位上偏移量|string|'0%'|false|
 |chipColor|chip颜色|string|'#26c1c9'|false|
 |chipText|chip文本|string|''|false|
-|subTitleColor|小标题颜色|string|'#ec6a13'|true|
+|subTitleColor|小标题颜色|string|'#ec6a13'|false|
 |subTitle|小标题|string|''|true|
 |imgUrl|图片链接|string|''|false|
 |content|正文内容|string|''|true|
