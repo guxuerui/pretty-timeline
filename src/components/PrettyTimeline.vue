@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<IPrettyTimeline>(), {
   ],
 })
 
-// 是否为移动端
+// 判断是否为移动端
 const ifMobile = isMobile()
 
 // icon position
