@@ -1,7 +1,7 @@
 {
   "name": "pretty-timeline",
   "type": "module",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "packageManager": "pnpm@7.1.5",
   "description": "vue3 pretty timeline",
   "author": "guxuerui",
