@@ -92,6 +92,7 @@ onMounted(() => {
 <template>
   <div class="wrapper">
     <div :class="ifMobile ? mobile.timeline : web.timeline">
+      <i :class="ifMobile ? mobile.line : web.line" />
       <div
         v-for="timeline, index in timelineArr"
         :key="index"
@@ -236,7 +237,18 @@ onMounted(() => {
 
 <style module="web">
   .timeline {
-    background: url(../../src/assets/line-bg.png) repeat-y 23% 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .line {
+    display: inline-block;
+    width: 3px !important;
+    height: 100%;
+    background: v-bind('baseColor');
+    position: absolute;
+    left: 23%;
+    top: 0;
   }
   .listItem {
     display: grid;
@@ -246,7 +258,18 @@ onMounted(() => {
 
 <style module="mobile">
   .timeline {
-    background: url(../../src/assets/line-bg.png) repeat-y 5% 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .line {
+    display: inline-block;
+    width: 3px !important;
+    height: 100%;
+    background: v-bind('baseColor');
+    position: absolute;
+    left: 4.5%;
+    top: 0;
   }
   .listItem {
     padding-left: 30px;
