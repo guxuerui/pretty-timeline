@@ -75,6 +75,6 @@ const timelineArr = ref<ITimeline[]>([
 
 <template>
   <div max-w-3xl my-0 ma>
-    <PrettyTimeline :timeline-data="timelineArr" />
+    <PrettyTimeline base-color="#09afaf" :timeline-data="timelineArr" />
   </div>
 </template>

@@ -122,7 +122,7 @@ const timelineArr = ref<ITimeline[]>([
 ```
 
 ```html
-<pretty-timeline :timeline-data="timelineArr" />
+<pretty-timeline base-color="#09afaf" :timeline-data="timelineArr" />
 ```
 
 ### 3. 兼容性
@@ -164,7 +164,7 @@ interface IPrettyTimeline {
 
 |名称|描述|类型|默认|是否必须|
 |---|---|---|---|---|
-|baseColor|基础颜色, 应用于年份和title|string|'#58a6fb'|false|
+|baseColor|基础颜色, 应用于年份/title/线的颜色|string|'#58a6fb'|false|
 |isCollapsed|是否收起|boolean|false|true|
 |year|年份时间|string|''|true|
 |title|标题|string|''|true|
